@@ -21,13 +21,11 @@ Import all necessary packages
 There are a few setup procedures that need to be followed before any code is written. In this step, we simply load a
 few python packages that will be necessary in the later steps.
 """
-import numpy as np
-import matplotlib.pyplot as plt
 
 import sys
-from sidpy.io.interface_utils import openfile_dialog, get_QT_app
+from sidpy.io.interface_utils import get_QT_app
 sys.path.append('../')
-from ScopeReaders.em.tem.dm3_reader import DM3Reader
+from SciFiReaders.microscopy.em.tem import DM3Reader
 
 ####################################################################################
 # Open a file dialog
@@ -54,7 +52,7 @@ if len(file_name) < 3 or file_name[-4:] != '.dm3':
 ####################################################################################
 # Read file
 # =========
-# We use the ScopeReader to read the file into a sidpy dataset.
+# We use the Reader to read the file into a sidpy dataset.
 # All metadata (absolutely everything) is saved in the ``original_metadata`` attribute
 # of the sidpy Dataset. If the selected file is not a dm3 File you get an ``IOError``.
 

@@ -6,26 +6,35 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, 'README.rst')) as f:
     long_description = f.read()
 
-with open(os.path.join(here, 'ScopeReaders/__version__.py')) as f:
+with open(os.path.join(here, 'SciFiReaders/__version__.py')) as f:
     __version__ = f.read().split("'")[1]
 
 # TODO: Move requirements to requirements.txt
-requirements = ['numpy>=1.10',
+requirements = [  # basic
+                'numpy>=1.10',
                 'toolz',  # dask installation failing without this
                 'cytoolz',  # dask installation failing without this
                 'dask>=0.10',
                 'sidpy>=0.0.2',
-                'pillow>=5.4.0'
+                # generic:
+                'pillow>=5.4.0',
+                # SID
+                'pyUSID',
+                'pyNSID',
+                # microscopy
+                # spm/afm
+                'igor',
+                # em/tem:
                 ]
 
 setup(
-    name='ScopeReaders',
+    name='SciFiReaders',
     version=__version__,
-    description='Tools for extracting data and metadata from materials '
-                'microscopy / spectroscopy files',
+    description='Tools for extracting data and metadata from scientific data '
+                'files',
     long_description=long_description,
     classifiers=[
-        'Development Status :: 0 - Gamma',
+        'Development Status :: 3 - Alpha',
         'Environment :: Console',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
@@ -44,7 +53,7 @@ setup(
     keywords=['imaging', 'spectra', 'multidimensional', 'scientific'],
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*",
                                     "tests"]),
-    url='https://pycroscopy.github.io/ScopeReaders/about.html',
+    url='https://pycroscopy.github.io/SciFiReaders/about.html',
     license='MIT',
     author='Pycroscopy contributors',
     author_email='pycroscopy@gmail.com',
